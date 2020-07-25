@@ -1,0 +1,58 @@
+<div>
+  <h2>welcome</h2>
+  <hr/>
+  <h3>局部模版变量</h3>
+  <div>
+    <input #box (keyup)="onKey(box.value)"/>
+    <p>{{values}}</p>
+  </div>
+  <hr/>
+  <div>
+    <h3>响应式表单</h3>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label>
+          firstName:
+          <input type="text" formControlName="firstName"/>
+        </label>
+      </div>
+      <div>X
+        <label>
+          lastName:
+          <input type="text" formControlName="lastName"/>
+        </label>
+      </div>
+      <div formGroupName="address">
+        <div>
+          <label>
+            street:
+            <input type="text" formControlName="street" required/>
+          </label>
+        </div>
+        <div>
+          <label>
+            city:
+            <input type="text" formControlName="city"/>
+          </label>
+        </div>
+        <div>
+          <label>
+            state:
+            <input type="text" formControlName="state"/>
+          </label>
+        </div>
+        <div>
+          <label>
+            zip:
+            <input type="text" formControlName="zip"/>
+          </label>
+        </div>
+      </div>
+      <div>Form Status: {{userForm.status}}</div>
+      <div>
+        <button type="submit" [disabled]="!userForm.valid">提交</button>
+        <button type="button" (click)="updateProfile()">更新数据</button>
+      </div>
+    </form>
+  </div>
+</div>
